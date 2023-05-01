@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContexApi } from '../../AuthContext/Provider';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [error,setError] = useState('');
@@ -88,14 +88,9 @@ const Login = () => {
 
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
-                                <input
-                                    id="remember_me"
-                                    name="remember_me"
-                                    type="checkbox"
-                                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                                />
-                                <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
-                                    Remember me
+                              
+                                <label htmlFor="remember_me" className="ml-2 font-medium block text-sm text-gray-900">
+                                <Link to='/register'>create an account</Link>
                                 </label>
                             </div>
 

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContexApi } from '../../AuthContext/Provider';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [error, setError] = useState('')
@@ -65,6 +66,7 @@ const Register = () => {
                     <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='password' id="password" type="password" placeholder="Enter your password" />
                 </div>
                 <p className='text-red-600'>{error}</p>
+                <p className='font-medium my-3'>Alrady have an account, <Link className='text-indigo-600' to='/login'>Please Login</Link></p>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                     Register
                 </button>
