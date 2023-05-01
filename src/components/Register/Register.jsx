@@ -22,8 +22,8 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
                 sendVerificationCode(result)
-                    .then(result => {
-                        console.log(result);
+                    .then(() => {
+                        
                     })
                     .catch(error => {
                         console.log(error);
@@ -35,6 +35,7 @@ const Register = () => {
                     .catch(error =>{
                         console.log(error);
                     })
+                    e.target.reset()
 
             })
             .catch(error => {

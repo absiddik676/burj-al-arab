@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import bg from '../../assets/306949.jpg'
 import { Link } from 'react-router-dom';
+import { AuthContexApi } from '../../AuthContext/Provider';
 const Header = () => {
-    return (
+    const {user} = useContext(AuthContexApi)
+     return (
         <div className='bg-hero w-full h-56 bg-cover bg-center bg-no-repeat'>
             <div className="navbar text-white font-semibold text-lg">
                 <div className="navbar-start">
@@ -26,10 +28,15 @@ const Header = () => {
                         </ul>
 
                     </div>
-                    <ul className="menu menu-horizontal px-1 ml-9">
+                    <ul className="menu menu-horizontal flex gap-7 px-1 ml-9">
                         <Link>Home</Link>
-                        <Link className='mx-5'>About</Link>
+                        <Link>About</Link>
                         <Link>Room</Link>
+                        {
+                            user ? <button>Log out</button> : <Link> Login</Link>
+                        }
+                        
+                        
                     </ul>
                 </div>
             
