@@ -1,22 +1,27 @@
 import React, { useContext, useState } from 'react';
 import { AuthContexApi } from '../../AuthContext/Provider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [error,setError] = useState('');
     const [email,setEmail] = useState('')
     const { logIng,forgetPassword } = useContext(AuthContexApi)
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from =  location?.state?.from?.pathname || '/'
     const handelLogin = e => {
         
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
         setEmail(email)
-        console.log(email, password);
         setError('')
         logIng(email, password)
             .then(result => {
                 console.log(result);
                 e.target.reset();
+                navigate(from,{replace:true})
+
             })
             .catch(error =>{
                 console.log(error);

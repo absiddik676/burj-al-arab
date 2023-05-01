@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { createContext, useEffect, useState } from 'react';
 export const AuthContexApi = createContext(null)
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/Firebase.config';
 const auth = getAuth(app)
 const Provider = ({children}) => {
     const [user,setUser] = useState(null)
+    const [loading,setLoading] = useState(true)
 
 
     const createAccount = (email,password) =>{
@@ -30,9 +31,14 @@ const Provider = ({children}) => {
         return sendPasswordResetEmail(auth,email);
     }
 
+    const logOut = () =>{
+        return signOut(auth)
+    }
+
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth,loggedUser=>{
             setUser(loggedUser);
+            setLoading(false)
         })
         return ()=>{
             unSubscribe()
@@ -44,7 +50,9 @@ const Provider = ({children}) => {
         sendVerificationCode,
         updateUserProfile,
         logIng,
-        forgetPassword
+        forgetPassword,
+        logOut,
+        loading
     }
     return (
         <AuthContexApi.Provider value={authInfo}>

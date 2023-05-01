@@ -3,8 +3,15 @@ import bg from '../../assets/306949.jpg'
 import { Link } from 'react-router-dom';
 import { AuthContexApi } from '../../AuthContext/Provider';
 const Header = () => {
-    const {user} = useContext(AuthContexApi)
-     return (
+    const { user, logOut } = useContext(AuthContexApi)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error);
+            })
+    };
+    return (
         <div className='bg-hero w-full h-56 bg-cover bg-center bg-no-repeat'>
             <div className="navbar text-white font-semibold text-lg">
                 <div className="navbar-start">
@@ -25,6 +32,7 @@ const Header = () => {
                                 </ul>
                             </li>
                             <li><a>Item 3</a></li>
+                            <h1>ss</h1>
                         </ul>
 
                     </div>
@@ -33,14 +41,17 @@ const Header = () => {
                         <Link>About</Link>
                         <Link>Room</Link>
                         {
-                            user ? <button>Log out</button> : <Link> Login</Link>
+                            user ? <button onClick={handleLogOut}>Log out</button> : <Link to='/login'> Login</Link>
                         }
-                        
-                        
+
+
                     </ul>
+
                 </div>
-            
-                
+                <div className="navbar-end mr-10">
+                    <p>{user?.displayName}</p>
+                </div>
+
             </div>
             <h1 className='text-5xl text-gray-400 text-center font-semibold mt-9'>Burj Al Arab</h1>
             <h1 className='text-5xl text-gray-400 text-center font-semibold'>A global icon of Arabian luxury</h1>

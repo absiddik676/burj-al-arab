@@ -4,6 +4,7 @@ import room2 from '../../assets/images.jpg'
 import room3 from '../../assets/burj-al-arab-1-bedroom-panoramic_6-4_landscape.jpg'
 import { FaBed,FaDollarSign } from 'react-icons/fa';
 import { HiUsers } from "react-icons/hi2";
+import { Link } from 'react-router-dom';
 const Rooms = () => {
     return (
         <div className='flex justify-around mt-16'>
@@ -15,7 +16,7 @@ const Rooms = () => {
                     <p className='flex items-center gap-2 '> <FaBed /> 1</p>
                     <p className='flex items-center gap-2 '> <HiUsers /> 1</p>
                     <p className='flex items-center gap-2 '> <FaDollarSign /> 199</p>
-                    <button className="btn btn-sm bg-blue-700">Book</button>
+                    <Link to='/book'><button className="btn btn-sm bg-blue-700">Book</button></Link>
                     </div>
                 </div>
             </div>
@@ -27,7 +28,7 @@ const Rooms = () => {
                     <p className='flex items-center gap-2 '> <FaBed /> 1</p>
                     <p className='flex items-center gap-2 '> <HiUsers /> 1</p>
                     <p className='flex items-center gap-2 '> <FaDollarSign /> 299</p>
-                    <button className="btn btn-sm bg-blue-700">Book</button>
+                    <Link to='/book'><button className="btn btn-sm bg-blue-700">Book</button></Link>
                     </div>
                 </div>
             </div>
@@ -39,7 +40,7 @@ const Rooms = () => {
                     <p className='flex items-center gap-2 '> <FaBed /> 1</p>
                     <p className='flex items-center gap-2 '> <HiUsers /> 1</p>
                     <p className='flex items-center gap-2 '> <FaDollarSign /> 399</p>
-                    <button className="btn btn-sm bg-blue-700">Book</button>
+                    <Link to='/book'><button className="btn btn-sm bg-blue-700">Book</button></Link>
                     </div>
                 </div>
             </div>
